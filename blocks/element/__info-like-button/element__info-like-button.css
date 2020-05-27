@@ -1,0 +1,14 @@
+.element__info-like-button {
+	width: 20px;
+	height: 18px;
+	background: #FFFFFF;
+	border: 0px;
+	background-image: url(../../../images/like.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.element__info-like-button:hover {
+	cursor: pointer;
+}
