@@ -19,7 +19,9 @@ buttonEdit.addEventListener('click', openPopup);
 
 function closePopup () {
     popup.classList.remove('popup_opened');
+
 }
+close.addEventListener('click', closePopup);
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -29,4 +31,3 @@ function formSubmitHandler (evt) {
 
 save.addEventListener('click', closePopup);
 form.addEventListener('submit', formSubmitHandler);
-close.addEventListener('click', closePopup)
