@@ -11,4 +11,6 @@
 
 .element__info-like-button:hover {
 	cursor: pointer;
+	opacity: 0.6;
+	transition: 1s linear;
 }

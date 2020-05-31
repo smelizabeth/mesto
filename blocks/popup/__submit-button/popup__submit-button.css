@@ -11,13 +11,13 @@
 	color: #FFFFFF;
 	padding: 0;
 	margin-top: 48px;
-	margin-bottom: 36px;
 }
 
 .popup__submit-button:hover {
 	cursor: pointer;
 	background-color: rgba(0, 0, 0, 0.8);
 	opacity: 0.6;
+	transition: 1s linear;
 }
 
 @media screen and (max-width: 515px) {

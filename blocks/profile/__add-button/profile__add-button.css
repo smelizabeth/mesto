@@ -6,7 +6,7 @@
 	min-height: 50px;
 	border: 2px solid #fff;
 	border-radius: 2px;
-	background-color: #000;
+	background-color: transparent;
 	margin-left: auto;
 	padding: 0;
 }
@@ -14,6 +14,7 @@
 .profile__add-button:hover {
 	opacity: 0.6;
 	cursor: pointer;
+	transition: 1s linear;
 }
 
 @media screen and (max-width: 800px) {
