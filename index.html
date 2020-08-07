@@ -19,76 +19,64 @@
       <div class="profile__info">
         <div class="profile__container">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button"></button>
+          <button type="button" class="profile__edit-button"></button> 
         </div>
         <p class="profile__job">Исследователь океана</p>
       </div>
       <button type="button" class="profile__add-button"> </button>
     </section>
 
-    <section class="elements">
-      <article class="element">
-        <img class="element__img" src="./images/karachaevsk_photo.png" alt="Карачаевск">
-        <div class="element__info">
-          <h2 class="element__info-text">Карачаевск</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
+<section class="cards">
+</section>
 
-      <article class="element">
-        <img class="element__img" src="./images/elbrus_photo.png" alt="Гора Эльбрус">
-        <div class="element__info">
-          <h2 class="element__info-text">Гора Эльбрус</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__img" src="./images/dombay_photo.png" alt="Домбай">
-        <div class="element__info">
-          <h2 class="element__info-text">Домбай</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__img" src="./images/elbrus_photo.png" alt="Гора Эльбрус">
-        <div class="element__info">
-          <h2 class="element__info-text">Гора Эльбрус</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__img" src="./images/dombay_photo.png" alt="Домбай">
-        <div class="element__info">
-          <h2 class="element__info-text">Домбай</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
-
-      <article class="element">
-        <img class="element__img" src="./images/karachaevsk_photo.png" alt="Карачаево-Ч...">
-        <div class="element__info">
-          <h2 class="element__info-text">Карачаево-Ч...</h2>
-          <button type="button" class="element__info-like-button" aria-label="поставить лайк"></button>
-        </div>
-      </article>
-
-    </section>
     <footer class="footer">
       <p class="footer__title">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-      <form name="OpenForm" method="get" action="#" class="popup__container">        
-        <button class="popup__close-button" type="reset"></button>
+
+    <div class="popup popup_type_edit-profile">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button"></button>
+      <form name="popup__form" method="get" action="#" class="popup__form">        
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input popup__input_name" type="text" name="nameInput">
-        <input class="popup__input popup__input_job" type="text" name="jobInput">
-        <button class="popup__submit-button" type="submit" >Сохранить</button>
+        <input class="popup__input popup__input_type_name" type="text">
+        <input class="popup__input popup__input_type_job" type="text">
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+
+  <div class="popup popup_type_add-card">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button"></button>
+    <form name="popup__form" method="get" action="#" class="popup__form">        
+      <h2 class="popup__title">Новое Место</h2>
+      <input class="popup__input popup__input_type_place" type="text" placeholder="Название">
+      <input class="popup__input popup__input_type_url" type="text" placeholder="Ссылка на картинку">
+      <button class="popup__submit-button" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+<div class="popup popup_type_image">
+  <div class="popup__container-image">
+    <button type="button" class="popup__close-button"></button>
+<img class="popup__image" src="" alt="">
+<h3 class="popup__image-title"></h3>
+</div>
+</div>
+</div>
+<template class="template-card">
+  <div class="card">
+      <img src="" alt="" class="card__image">
+      <div class="card__info">
+          <h2 class="card__info-text"></h2>
+          <button type="button" class="card__like-button"></button>
+          <button type="button" class="card__delete-button"></button>
+        </div>
+      </div>
+
+</template> 
+
 <script src="./scripts/script.js"></script>
 
 </body>

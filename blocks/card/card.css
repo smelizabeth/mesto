@@ -1,0 +1,14 @@
+@import url(./__image/card__image.css);
+@import url(./__info/card__info.css);
+@import url(./__info-text/card__info-text.css);
+@import url(./__like-button/card__like-button.css);
+@import url(./__delete-button/card__delete-button.css);
+@import url(./__like-button/__like-button_active/card__like-button_active.css);
+
+.card {
+    background-color: #ffffff;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+	position: relative;
+	border-radius: 10px;
+
+}

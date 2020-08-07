@@ -1,7 +1,9 @@
-.element__info {
+.card__info {
 	background: #FFFFFF;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 25px 21px 31px 15px;
+	border-radius: 10px;
+
 }
