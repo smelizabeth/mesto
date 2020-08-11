@@ -58,8 +58,7 @@ const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, i
 
     inputs.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        checkInputValidity(formElement, inputElement, inputErrorClass, errorClass
-        );
+        checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
         toggleButtonState(inputs, buttonSubmit, inactiveButtonClass);
       });
     });
