@@ -10,50 +10,103 @@ const addCardForm = addCardModal.querySelector('.popup__form');
 // Inputs
 const titleInputValue = editForm.querySelector('.popup__input_type_name');
 const descriptionInputValue = editForm.querySelector('.popup__input_type_job');
+
 const placeInput = addCardForm.querySelector('.popup__input_type_place');
 const urlInput = addCardForm.querySelector('.popup__input_type_url');
 
 // Buttons & other DOM elements
 const openEditPopupButton = document.querySelector('.profile__edit-button');
 const openAddCardModalButton = document.querySelector('.profile__add-button');
+
 const editProfileModalCloseButton = editProfileModal.querySelector('.popup__close-button');
 const addCardModalCloseButton = addCardModal.querySelector('.popup__close-button');
 const imageModalCloseButton = imageModal.querySelector('.popup__close-button');
 
 const profileTitle = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__job');
-const cardTemplate = document.querySelector('.template-card').content.querySelector('.card');
-const list = document.querySelector('.cards');
+
+
 const imageModalTitle = imageModal.querySelector('.popup__image-title');
 const imageModalImg = imageModal.querySelector('.popup__image');
 
-// Карточки
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+const cardTemplate = document.querySelector('.template-card').content.querySelector('.card');
+const list = document.querySelector('.cards');
+
+//Open / close
+function openModalWindow(modalWindow) {
+    modalWindow.classList.add('popup_opened');
+    document.addEventListener('keydown', closeModalEsc);
+};
+
+function closeModalWindow(modalWindow) {
+    modalWindow.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeModalEsc);
+};
+
+function closeModalEsc(evt) {
+    const modalOpened = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') {
+        closeModalWindow(modalOpened);
     }
-];
+};
+
+function closeModalOverlay(e) {
+    if (!e.target.closest('.popup__container')) {
+        closeModalWindow(e.target.closest('.popup'));
+    }
+};
+
+editProfileModal.addEventListener("click", closeModalOverlay);
+addCardModal.addEventListener("click", closeModalOverlay);
+imageModal.addEventListener("click", closeModalOverlay);
+
+// Save
+function formEditSubmitHandler(evt) {
+    evt.preventDefault();
+    profileTitle.textContent = titleInputValue.value;
+    profileDescription.textContent = descriptionInputValue.value;
+    closeModalWindow(editProfileModal);
+};
+
+
+function addCardSubmitHandler(evt) {
+    evt.preventDefault();
+
+    renderCard({ name: placeInput.value, link: urlInput.value })
+
+    openModalWindow(addCardModal);
+}
+
+
+editForm.addEventListener('submit', formEditSubmitHandler);
+
+addCardForm.addEventListener('submit', addCardSubmitHandler);
+
+//click
+openEditPopupButton.addEventListener('click', () => {
+    if (!openEditPopupButton.classList.contains('popup_opened')) {
+        titleInputValue.value = profileTitle.textContent;
+        descriptionInputValue.value = profileDescription.textContent;
+    }
+    openModalWindow(editProfileModal);
+});
+
+editProfileModalCloseButton.addEventListener('click', () => {
+    closeModalWindow(editProfileModal);
+
+});
+
+openAddCardModalButton.addEventListener('click', () => {
+    openModalWindow(addCardModal)
+});
+
+addCardModalCloseButton.addEventListener('click', () => {
+    closeModalWindow(addCardModal)
+});
+
+imageModalCloseButton.addEventListener('click', () => {
+    closeModalWindow(imageModal)
+});
 
 // Create card
 function createCard(data) {
@@ -62,6 +115,18 @@ function createCard(data) {
     const cardTitle = cardElement.querySelector('.card__info-text');
     const cardDeleteButton = cardElement.querySelector('.card__delete-button');
     const cardLikeButton = cardElement.querySelector('.card__like-button');
+
+    cardTitle.textContent = data.name;
+    cardImage.src = data.link;
+    cardImage.alt = data.name;
+
+    function handleImageClick(src, textcontent) {
+        openModalWindow(imageModal);
+        imageModalImg.src = src;
+        imageModalTitle.textContent = textcontent;
+        imageModalImg.alt = textcontent;
+    }
+
 
     // Like
     cardLikeButton.addEventListener('click', (evt) => {
@@ -76,15 +141,11 @@ function createCard(data) {
 
     // Open Img
     cardImage.addEventListener('click', () => {
-        toggleModalWindow(imageModal);
-
-        imageModalImg.src = cardImage.src;
-        imageModalTitle.textContent = cardTitle.textContent;
+        handleImageClick(cardImage.src, cardTitle.textContent, cardImage.alt);
     });
 
-    cardTitle.textContent = data.name;
-    cardImage.src = data.link;
-    cardImage.alt = data.name;
+
+
     return cardElement;
 }
 
@@ -94,50 +155,4 @@ function renderCard(data) {
 
 initialCards.forEach((data) => {
     renderCard(data);
-});
-
-// Save form
-function formEditSubmitHandler(evt) {
-    evt.preventDefault();
-    profileTitle.textContent = titleInputValue.value;
-    profileDescription.textContent = descriptionInputValue.value;
-
-    toggleModalWindow(editProfileModal);
-};
-
-function formAddCardSubmitHandler(evt) {
-    evt.preventDefault();
-    renderCard({ name: placeInput.value, link: urlInput.value });
-    toggleModalWindow(addCardModal);
-};
-
-editForm.addEventListener('submit', formEditSubmitHandler);
-addCardForm.addEventListener('submit', formAddCardSubmitHandler);
-
-function toggleModalWindow(modalWindow) {
-    modalWindow.classList.toggle('popup_opened');
-}
-
-function toggleEditPopup() {
-    toggleModalWindow(editProfileModal);
-    titleInputValue.value = profileTitle.textContent;
-    descriptionInputValue.value = profileDescription.textContent;
-
-};
-
-
-// Open Close popup
-openEditPopupButton.addEventListener('click', toggleEditPopup);
-editProfileModalCloseButton.addEventListener('click', toggleEditPopup);
-
-openAddCardModalButton.addEventListener('click', () => {
-    toggleModalWindow(addCardModal);
-});
-
-addCardModalCloseButton.addEventListener('click', () => {
-    toggleModalWindow(addCardModal);
-});
-
-imageModalCloseButton.addEventListener('click', () => {
-    toggleModalWindow(imageModal);
 });

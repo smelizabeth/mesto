@@ -11,6 +11,7 @@
 	justify-content: space-between;
 	align-items: center;
 	color: white;
+	transition: visibility 1s, opacity 0.5s linear; 
 }
 
 @media screen and (max-width: 800px) {

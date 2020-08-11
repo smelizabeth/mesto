@@ -19,65 +19,78 @@
       <div class="profile__info">
         <div class="profile__container">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button"></button> 
+          <button type="button" class="profile__edit-button"></button>
         </div>
         <p class="profile__job">Исследователь океана</p>
       </div>
       <button type="button" class="profile__add-button"> </button>
     </section>
 
-<section class="cards">
-</section>
+    <section class="cards">
+    </section>
 
     <footer class="footer">
       <p class="footer__title">&copy; 2020 Mesto Russia</p>
     </footer>
 
+
     <div class="popup popup_type_edit-profile">
       <div class="popup__container">
-        <button type="button" class="popup__close-button"></button>
-      <form name="popup__form" method="get" action="#" class="popup__form">        
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input popup__input_type_name" type="text">
-        <input class="popup__input popup__input_type_job" type="text">
-        <button class="popup__submit-button" type="submit">Сохранить</button>
-      </form>
+        <form action="#" class="popup__form" name="popupForm" method="GET" novalidate>
+          <button type="button" class="popup__close-button"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input name="name" type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" placeholder="Введите текст" required
+            minlength="2" maxlength="40" autocomplete="off">
+          <span class="popup__error" id="name-error"></span>
+          <input name="job" type="text" class="popup__input popup__input_type_job" value="Исследователь океана" placeholder="Введите текст" required
+            minlength="2" maxlength="200" autocomplete="off">
+          <span class="popup__error" id="job-error"></span>
+          <button type="submit" class="popup__submit-button" disabled>Сохранить</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <div class="popup popup_type_add-card">
-    <div class="popup__container">
-      <button type="button" class="popup__close-button"></button>
-    <form name="popup__form" method="get" action="#" class="popup__form">        
-      <h2 class="popup__title">Новое Место</h2>
-      <input class="popup__input popup__input_type_place" type="text" placeholder="Название">
-      <input class="popup__input popup__input_type_url" type="text" placeholder="Ссылка на картинку">
-      <button class="popup__submit-button" type="submit">Сохранить</button>
-    </form>
-  </div>
-</div>
+    <div class="popup popup_type_add-card">
+      <div class="popup__container">
+        <form action="#" class="popup__form popup_type_add-card" name="popupForm" method="GET" novalidate>
+          <button type="button" class="popup__close-button"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <input name="title" type="text" placeholder="Название" class="popup__input popup__input_type_place" value=""
+            required minlength="1" maxlength="30" autocomplete="off">
+          <span class="popup__error " id="title-error"></span>
+          <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_url"
+            value="" required autocomplete="off">
+          <span class="popup__error" id="url-error"></span>
+          <button type="submit" class="popup__submit-button" disabled>Создать</button>
+        </form>
+      </div>
+    </div>
 
-<div class="popup popup_type_image">
-  <div class="popup__container-image">
-    <button type="button" class="popup__close-button"></button>
-<img class="popup__image" src="" alt="">
-<h3 class="popup__image-title"></h3>
-</div>
-</div>
-</div>
-<template class="template-card">
-  <div class="card">
-      <img src="" alt="" class="card__image">
-      <div class="card__info">
+    <div class="popup popup_type_image">
+      <div class="popup__container-image">
+        <button type="button" class="popup__close-button"></button>
+        <img class="popup__image" src="" alt="">
+        <h3 class="popup__image-title"></h3>
+      </div>
+    </div>
+
+
+    <template class="template-card">
+      <div class="card">
+        <img src="" alt="" class="card__image">
+        <div class="card__info">
           <h2 class="card__info-text"></h2>
           <button type="button" class="card__like-button"></button>
           <button type="button" class="card__delete-button"></button>
         </div>
       </div>
 
-</template> 
+    </template>
 
-<script src="./scripts/script.js"></script>
+    <script src="./scripts/initialCards.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 
 </body>
+
 </html>
