@@ -6,7 +6,7 @@
     color: #FF0000;
 }
 
-@media (max-width: 570px) {
+@media (max-width: 515px) {
     .popup__error_visible {
         margin-left: 20px;
     }
