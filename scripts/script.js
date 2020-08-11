@@ -99,12 +99,12 @@ editProfileModalCloseButton.addEventListener('click', () => {
 
 openAddCardModalButton.addEventListener('click', () => {
     openModalWindow(addCardModal)
-
    
 });
 
 addCardModalCloseButton.addEventListener('click', () => {
     closeModalWindow(addCardModal)
+
 
 });
 
