@@ -75,7 +75,9 @@ function addCardSubmitHandler(evt) {
     renderCard({ name: placeInput.value, link: urlInput.value })
 
     closeModalWindow(addCardModal);
-        addCardForm.reset();
+    evt.target.reset();
+    
+    resetButton();
 }
 
 
@@ -97,9 +99,10 @@ editProfileModalCloseButton.addEventListener('click', () => {
 
 });
 
+
+
 openAddCardModalButton.addEventListener('click', () => {
-    openModalWindow(addCardModal)
-   
+    openModalWindow(addCardModal);
 });
 
 addCardModalCloseButton.addEventListener('click', () => {

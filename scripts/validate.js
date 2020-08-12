@@ -34,11 +34,16 @@ const hasInvalidInput = (inputs) => {
     return !inputElement.validity.valid;
   });
 };
+const resetButton = () => {
+  const buttons = Array.from(document.querySelectorAll('.popup__submit-button'));
+  buttons.forEach((i) => {
+    i.classList.add('popup__submit-button_disabled');
+    i.disabled = true});
+};
 
 const toggleButtonState = (inputs, buttonSubmit, inactiveButtonClass) => {
   if (hasInvalidInput(inputs)) {
-    buttonSubmit.classList.add(inactiveButtonClass);
-    buttonSubmit.disabled = true;
+    resetButton();
   } else {
     buttonSubmit.classList.remove(inactiveButtonClass);
     buttonSubmit.disabled = false;
@@ -64,5 +69,7 @@ const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, i
     });
   });
 };
+
+
 
 enableValidation(object);
