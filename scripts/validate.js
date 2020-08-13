@@ -34,16 +34,21 @@ const hasInvalidInput = (inputs) => {
     return !inputElement.validity.valid;
   });
 };
+
+
+
+
 const resetButton = () => {
-  const buttons = Array.from(document.querySelectorAll('.popup__submit-button'));
-  buttons.forEach((i) => {
+  const addCardModalReset = Array.from(document.querySelectorAll('.popup__submit-button_add-card'));
+  addCardModalReset.forEach((i) => {
     i.classList.add('popup__submit-button_disabled');
     i.disabled = true});
 };
 
 const toggleButtonState = (inputs, buttonSubmit, inactiveButtonClass) => {
   if (hasInvalidInput(inputs)) {
-    resetButton();
+    buttonSubmit.classList.add(inactiveButtonClass);
+    buttonSubmit.disabled = true;
   } else {
     buttonSubmit.classList.remove(inactiveButtonClass);
     buttonSubmit.disabled = false;
